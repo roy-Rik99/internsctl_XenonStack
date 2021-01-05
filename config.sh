@@ -47,6 +47,8 @@ function user_list {
 		echo "*********************Regular Users*********************"
 		#Uncomment for Displaying all users including Service Accounts
 		#getent passwd | cut -d: -f1
+		#Uncomment for Displaying all users with USER ID '100.'
+		#getent passwd | cut -d: -f1,3 | grep '100.' | cut -d: -f1
 		eval getent passwd {$min..$max} | cut -d: -f1
 	elif [ "$1" = "sudo" ]; then
 		echo "*********************Users with SUDO permissions*********************"
