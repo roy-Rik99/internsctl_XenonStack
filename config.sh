@@ -44,10 +44,10 @@ function user_list {
 	if [ "$1" =  "regular" ]; then
 		min=$(awk '/^UID_MIN/ {print $2}' /etc/login.defs)
 		max=$(awk '/^UID_MAX/ {print $2}' /etc/login.defs)
-		echo "*********************Regular Users*********************"
+		echo "*********************All Users*********************"
 		#Uncomment for Displaying all users including Service Accounts
 		#getent passwd | cut -d: -f1
-		#Uncomment for Displaying all users with USER ID '100.'
+		#Uncomment for Displaying all users with USER ID '100?'
 		#getent passwd | cut -d: -f1,3 | grep '100.' | cut -d: -f1
 		eval getent passwd {$min..$max} | cut -d: -f1
 	elif [ "$1" = "sudo" ]; then
@@ -68,13 +68,13 @@ function file_details {
 	owner=`stat --format="%U" $1`
 	lastmod=`stat --format="%y" $1`
 	if [ $err -eq 0 ]; then
-		if [ "$2" = "size" ]; then
+		if [ "$2" = "--size" -o "$2" = "-s" ]; then
 			printf "\nSize(B):\t%s\n\n" "$size"
-		elif [ "$2" = "perm" ]; then
+		elif [ "$2" = "--permissions" -o "$2" = "-p" ]; then
 			printf "\nAccess:\t\t%s\n\n" "$access"
-		elif [ "$2" = "owner" ]; then
+		elif [ "$3" = "--owner" -o "$3" = "-o" ]; then
 			printf "\nOwner:\t\t%s\n\n" "$owner"
-		elif [ "$2" = "lastmd" ]; then
+		elif [ "$3" = "--last-modified" -o "$3" = "-m" ]; then
 			printf "\nModify:\t\t%s\n\n" "$lastmod"
 		elif [ "$2" = "all" ]; then
 			printf "\nFile:\t\t%s\nAccess:\t\t%s\nSize(B):\t%d\nOwner:\t\t%s\nModify:\t\t%s\n\n" "$name" "$access" $size "$owner" "$lastmod"

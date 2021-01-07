@@ -1,0 +1,118 @@
+'\" t
+.\"     Title: internsctl
+.\"    Author: Baidurya Roy
+.\"      Date: 07\ \&January\ \&2021
+.\"    Manual: INTERNSCTL
+.\"    Source: Linux
+.\"  Language: English
+.\"
+.TH "INTERNSCTL" "1" "07\ \&January\ \&2021" "Linux" "INTERNSCTL"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+internsctl \- command\-line interface for custom commands
+.SH "SYNOPSIS"
+\fBinternsctl\fR [\-\-version] | [\-\-help]
+.RS
+[cpu getinfo] | [memory getinfo]
+.PP
+[user create \fB\fILOGIN\fR\fR {=\fB\fIUSER_NAME\fR\fR}]
+.PP
+[user set sudo \fB\fILOGIN\fR\fR {=\fB\fIUSER_NAME\fR\fR}]
+.PP
+[{user list} | {user list  --sudo-only}]
+.PP
+[file getinfo \fB\fIFILE\fR\fR {=\fB\fI<FILENAME>.<EXTENTION>\fR\fR}]
+.PP
+[file getinfo (--size | -s) | (--permissions | -p) | (--owner | -o) | (--last-modified | -m) \fB\fIFILE\fR\fR {=\fB\fI<FILENAME>.<EXTENTION>\fR\fR}]
+.RE
+.SH "DESCRIPTION"
+.PP
+\fBinternsctl\fR
+provides a high\-level commandline interface for obtaining information about System Architecture, Resources, Users Accounts and Files, Adding new users to system and Adding existing users to SUDO group\&.
+.SH "OPTIONS"
+.PP
+\-\-version
+.RS 4
+Prints the INTERNSCTL suite version\&.
+.RE
+.PP
+\-\-help
+.RS 4
+Prints the synopsis and a list of the most commonly used commands\&.
+.RE
+.PP
+cpu getinfo
+.RS 4
+Displays Information about the Central Processing Unit (CPU) in our Server\&.
+.RE
+.PP
+memory getinfo
+.RS 4
+Displays Information about Memory in our Server\&.
+.RE
+.PP
+user create \fI<login>\fR
+.RS 4
+Creates a New Regular User in our Server with a \fI<login>\fR User Name\&.
+.RE
+.PP
+user set sudo \fI<login>\fR
+.RS 4
+Adds a \fI<login>\fR User in our Server to the SUDO Group\&.
+.RE
+.PP
+user list \fI<option>\fR
+.RS 4
+If no \fI<option>\fR is specified, displays all Regular users in the system\&.
+.PP
+.PP
+user list --sudo-only
+.RS 4
+Only displays Users in SUDO Group\&.
+.RE
+.RE
+.PP
+file getinfo \fI<options>\fR \fI<filename.extension>\fR
+.RS 4
+If no \fI<options>\fR is specified, displays all information about the \fI<filename.extension>\fR\&.
+.PP
+file getinfo {--size, -s} \fI<filename.extension>\fR
+.RS 4
+Only displays the Size of the specified file \fI<filename.extension>\fR\&.
+.RE
+.PP
+file getinfo {--permissions, -p} \fI<filename.extension>\fR
+.RS 4
+Only displays the Permissions of the specified file \fI<filename.extension>\fR\&.
+.RE
+.PP
+file getinfo {--owner, -o} \fI<filename.extension>\fR
+.RS 4
+Only displays the Owner of the specified file \fI<filename.extension>\fR\&.
+.RE
+.PP
+file getinfo {--last-modified, -m} \fI<filename.extension>\fR
+.RS 4
+Only displays the Last Modification Time of the specified file \fI<filename.extension>\fR\&.
+.RE
+.RE
+.SH "DIAGNOSTICS"
+.PP
+\fBinternsctl\fR
+returns zero on normal operation, and returns one if error occurs\&.
+.SH "AUTHOR"
+.PP
+\fBBAIDURYA ROY\fR
+.RS 4
+.RE

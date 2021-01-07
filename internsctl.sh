@@ -25,17 +25,7 @@ function internsctl () {
 				echo "No File Specified"
 			fi
 		elif [[ "$4" == *"."* ]]; then
-			if [ "$3" = "--size" -o "$3" = "-s" ]; then
-				file_details "$4" "size"
-			elif [ "$3" = "--permissions" -o "$3" = "-p" ]; then
-				file_details "$4" "perm"
-			elif [ "$3" = "--owner" -o "$3" = "-o" ]; then
-				file_details "$4" "owner"
-			elif [ "$3" = "--last-modified" -o "$3" = "-m" ]; then
-				file_details "$4" "lastmd"
-			else
-				echo "Invalid Option"
-			fi
+			file_details "$4" "$3"
 		else
 			echo "Invalid Syntax."
 			echo "Specify file with extension. Eg :- internsctl file getinfo [options] <filename>.<extension>"
