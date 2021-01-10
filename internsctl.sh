@@ -5,6 +5,8 @@ source config.sh
 function internsctl () {
 	if [ "$*" = "--version" ]; then
 		echo "v0.1.0"
+	elif [ "$*" = "--help" ]; then
+		_help
 	elif [ "$*" = "cpu getinfo" ]; then
 		cpu_info
 	elif [ "$*" = "memory getinfo" ]; then

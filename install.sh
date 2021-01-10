@@ -34,7 +34,7 @@ echo "Copying Man Pages to Dir /usr/local/man/man1"
 sudo cp internsctl.1 /usr/local/man/man1
 
 echo "Compressing Man Pages in Dir /usr/local/man/man1"
-sudo gzip /usr/local/man/man1/ms.1
+sudo gzip /usr/local/man/man1/internsctl.1
 
 echo "Manually updating manual page index database caches"
 sudo mandb
